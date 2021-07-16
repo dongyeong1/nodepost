@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% for qna in qnatwits %}
+<h2>수정하기</h2>
+<p>{{qna.content}}</p>
+{% endfor %}
+
+
+
+
+
+<div>
+    <form id="twit-form" action="/post/dongupdates" method="post">
+        <div class="input-group">
+            <textarea id="twit" name="content" maxlength="14"></textarea>
+            <input type="hidden" value="{{id}}" name="id">
+        </div>
+        <div>
+            <button id="twit-btn" type="submit" class="btn">입력</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

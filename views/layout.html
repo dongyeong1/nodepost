@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/layout.css">
+    <title>Document</title>
+    {% block contentlink %}
+    {% endblock %}
+
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="">Dongpage</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/home">home</a></li>
+            <li><a href="/dong">자기소개</a></li>
+            <li><a href="/hukuoka">현지학기프로그램</a></li>
+            <li><a href="/qa">질의응답</a></li>
+
+        </ul>
+
+
+        <ul class="nick">
+            <li><a href="">{{user.nick}}님 안녕하세요</a></li>
+            <li><a href="/auth/logout">logout</a></li>
+
+
+
+        </ul>
+
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="dd">
+    <h1>일본 후쿠오카 현지학기제</h1>
+    <img src="현지취업.jpg" alt="">
+    <p>
+        해외취업 전국 1위를 달리고 있는 영진전문대는 여름방학을 맞아 재학생들의 해외취업 담금질에 본격적으로 나섰다.
+        영진전문대학 컴퓨터응용기계계열은 2개 해외취업반을 일본으로 파견한다. 지난 2일 일본기계자동화반 2학년생 23명이 대구공항을 통해 후쿠오카로 출발한 것을 비롯해 일본기계자동차반 2학년생 25명도 오는
+        8일 대구공항을 출발, 도쿄에서 현지 연수를 갖는다.
+        약 한 달간 진행될 이들 2개 반 일본연수는 협약기업에서 인턴십, 실전 일본어 학습, 현지 대학생과 공동 전공수업 참여, 토요타․소니 공장 견학에 참여하면서 일본 기업문화를 체험한다.
+        8일 출국 예정인 한윤환(컴퓨터응용기계계열, 22) 씨는 “이번 연수가 미래가 달린 중요한 기회인만큼, 일본과 일본 회사, 그리고 취업에 대해 필요한 부분이 뭔지를 체험하면서 알도록 하고 준비하겠다”고
+        말했다.
+        컴퓨터정보계열 일본IT기업주문반 2학년생 44명은 이달 28일 출국, 도쿄에서 연수를 시작한다. 이 반 역시 집중식 일본어 교육, 현장실습, 일본IT기업 설명회 참가와 견학, 문화체험 등의 프로그램에
+        참여하고 9월 8일 귀국한다.
+        K-Move스쿨과 청해진사업이 지원하는 이번 연수 프로그램은 취업대상 국가에서 현지생활을 미리 체험하게 돼 해외취업 경쟁력을 크게 높일 것으로 기대된다.
+        최재영 총장은 “우리 학생들이 해외에서 꿈을 마음껏 펼칠 수 있도록 해외취업반 운영의 내실을 더욱 다지고 해외 취업처를 발굴하는 등 해외에서도 주문식교육 성공 모델을 만들도록 노력하겠다”고 강조했다.
+
+    </p>
+</div>
+
+
+<hr>
+
+<div class="dongtwit">
+    <h1>댓글창</h1>
+
+    <div>
+        <form id="twit-form" action="/post/hukuoka" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <textarea id="twit" name="content" maxlength="14"></textarea>
+            </div>
+            <div>
+                <button id="twit-btn" type="submit" class="btn">입력</button>
+            </div>
+
+        </form>
+
+    </div>
+    {% for twit in twits %}
+    <div class="twit">
+        <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
+        <!-- <p>{{twit.User.id}}</p>
+    <input type="hidden" value="{{twit.id}}" class="twit-id">
+    <p>{{twit.id}}</p> -->
+        <div class="twit-author">유저닉네임:{{twit.User.nick}}</div>
+        <!-- {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %} -->
+        <!-- <button class="twit-follow">팔로우하기</button> -->
+        <!-- {% endif %} -->
+        <div class="twit-content" id="twit">내용:{{twit.content}}</div>
+
+        <form action="/post/hukuokaupdate?id={{twit.id}}&user={{twit.UserId}}" method="POST">
+            <button id="update-btn" type="submit" class="btndel">수정하기</button>
+        </form>
+
+
+        <form action="/post/hukuokadel?id={{twit.id}}&user={{twit.UserId}}" method="post">
+            <button id="del-btn" type="submit" class="btndel">삭제</button>
+        </form>
+
+        <!-- {% if twit.img %} -->
+        <!-- <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div> -->
+        <!-- {% endif %} -->
+    </div>
+    {% endfor %}
+
+    {% for count in counts %}
+    <div class="dongnum">
+        <a href="/hukuoka?page={{count}}">{{count}}</a>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
+<script>
+    window.onload = function () {
+        // const btn = document.getElementById('del-btn');
+        const btn = document.querySelectorAll('#del-btn').forEach(function (userItem) {
+            userItem.onclick = () => {
+                return confirm('삭제하시겠습니까?');
+            }
+        });
+    }
+</script>
+
+
+
+
+{% endblock %}

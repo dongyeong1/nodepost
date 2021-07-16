@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% for qna in qnatwits %}
+<h2>Q&A질문</h2>
+<p>{{qna.content}}</p>
+{% endfor %}
+<h2>Q&A답변</h2>
+{% for answer in answers %}
+
+<p> {{answer.content}}</p>
+{% endfor %}
+
+{% if pageuser %}
+
+
+<div>
+    <form id="twit-form" action="/post/answer" method="post">
+        <div class="input-group">
+            <textarea id="twit" name="content" maxlength="14"></textarea>
+            <input type="hidden" value="{{id}}" name="id">
+        </div>
+        <div>
+            <button id="twit-btn" type="submit" class="btn">입력</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+
+{% endif %}
+{% endblock %}

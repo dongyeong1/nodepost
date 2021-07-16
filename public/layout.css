@@ -1,0 +1,161 @@
+body {
+    margin: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: white;
+    background-size: 100%;
+}
+
+.dong {
+    color: black;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+
+}
+
+/*  */
+#twit-form {
+    border-bottom: 1px solid silver;
+    padding: 10px;
+    background: gray;
+    overflow: hidden;
+}
+
+
+.dongnum {
+    display: inline-block;
+    text-align: center;
+    background-color: pink;
+}
+
+.dongtwit {
+    padding: 50px;
+}
+
+.dongtwit.twit {
+    padding: 50px;
+
+}
+
+#twit {
+    width: 100%;
+    min-height: 72px;
+}
+
+.twit {
+    border: 1px solid silver;
+    border-radius: 4px;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.twit-author {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/*  */
+
+.dongnum a {
+    color: red;
+}
+
+.nick {
+    list-style: none;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(59, 55, 55);
+    padding: 8px 12px;
+    height: 80px;
+}
+
+.navbar_logo {
+    font-size: 30px;
+    color: white;
+}
+
+.navbar_menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+
+}
+
+.navbar_menu li {
+    padding: 8px 40px;
+}
+
+.navbar_icons li {
+    padding: 8px 30px;
+}
+
+.navbar_icons li:hover {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.navbar_menu li:hover {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.navbar_togbtn {
+    display: none;
+    position: absolute;
+    right: 32px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+@media screen and (max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        /*column으로 바꿧기때문에 align-items써야함
+        /* justify-content: flex-start; */
+        align-items: flex-start;
+        padding: 5px 20px;
+    }
+
+    .navbar_menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+    }
+
+    .navbar_menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar_icons {
+        /* display: none; */
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar_togbtn {
+        display: block;
+    }
+
+    .navbar_menu.active {
+        display: flex;
+    }
+
+    .navbar_icons.active {
+        display: flex;
+
+    }
+}

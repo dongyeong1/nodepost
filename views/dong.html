@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>자기소개</h2>
+<img src="동영.jpg" alt="" width="200px">
+<p>안녕하세요 김동영입니다.</p>
+
+
+
+<hr>
+
+<div class="dongtwit">
+    <h1>댓글창</h1>
+
+    <div>
+        <form id="twit-form" action="/post/dong" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <textarea id="twit" name="content" maxlength="14"></textarea>
+            </div>
+            <div>
+                <button id="twit-btn" type="submit" class="btn">입력</button>
+            </div>
+
+        </form>
+
+    </div>
+    {% for twit in twits %}
+    <div class="twit">
+        <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
+        <!-- <p>{{twit.User.id}}</p>
+    <input type="hidden" value="{{twit.id}}" class="twit-id">
+    <p>{{twit.id}}</p> -->
+        <div class="twit-author">유저닉네임:{{twit.User.nick}}</div>
+        <!-- {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %} -->
+        <!-- <button class="twit-follow">팔로우하기</button> -->
+        <!-- {% endif %} -->
+        <div class="twit-content" id="twit">내용:{{twit.content}}</div>
+
+
+        <form action="/post/dongupdate?id={{twit.id}}&user={{twit.UserId}}" method="POST">
+            <button id="update-btn" type="submit" class="btndel">수정하기</button>
+        </form>
+
+
+        <form action="/post/dongdel?id={{twit.id}}&user={{twit.UserId}}" method="post">
+            <button id="del-btn" type="submit" class="btndel">삭제</button>
+        </form>
+
+        <!-- {% if twit.img %} -->
+        <!-- <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div> -->
+        <!-- {% endif %} -->
+    </div>
+    {% endfor %}
+
+    {% for count in counts %}
+    <div class="dongnum">
+        <a href="/dong?page={{count}}">{{count}}</a>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
+<script>
+    window.onload = function () {
+        // const btn = document.getElementById('del-btn');
+        const btn = document.querySelectorAll('#del-btn').forEach(function (userItem) {
+            userItem.onclick = () => {
+                return confirm('삭제하시겠습니까?');
+            }
+        });
+    }
+</script>
+
+{% endblock %}

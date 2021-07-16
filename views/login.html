@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+
+
+
+
+    <div class=" container">
+
+        <div class="wrapper">
+            <div class="title">{{title}}</div>
+            <form action="/auth/login" method="post">
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="text" placeholder="Email" required>
+                </div>
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+
+                <div class="row button">
+                    <input type="submit" value="Login">
+
+
+
+            </form>
+
+
+            <div class="btn">
+
+                <form action="/auth/logout">
+                    <input type="submit" value="logout">
+                </form>
+            </div>
+
+
+
+            <div class="btnjoin">
+
+                <form action="/join">
+                    <input type="submit" value="join">
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="downbox">
+    </div>
+
+</body>
+
+</html>
